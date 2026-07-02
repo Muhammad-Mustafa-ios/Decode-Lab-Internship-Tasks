@@ -1,10 +1,10 @@
 import os #module import
 
-def Input():   #For getting Tasks
+def Input(listtasks):   #For getting Tasks
 
     os.system("cls")
     print("=========== TO-DO-LIST ===========\n")
-    listtasks=[]
+   
     btn='y'
     x=0
     while btn=='y':
@@ -51,7 +51,7 @@ def Done(listtasks):    #For Updating Tasks that are Done
         continue
     
 #mainbody of program
-
+listtasks=[]
 while True:
  print("=========== TO-DO-LIST ===========\n")
  
@@ -61,33 +61,40 @@ while True:
  print("3-> For Updating Tasks ")
  print("4-> For Exiting Program ")
 
- get_option=int(input("Option: "))
+ get_option=(input("Option: "))
 
  match get_option:   #Match cases for menu driven 
-    case 1:
+    case '1':
        
-       tasks=Input()
-       os.system("cls")    #Screen clear function
-    case 2:
-       if len(tasks)<=0:
-           print("No Tasks Yet....!")
+       tasks=Input(listtasks)
+       os.system("cls")    #Screen clear function  
+    case '2':
+       if len(listtasks)<=0:
+        os.system("cls") 
+        print("\n\nNo Tasks Yet,First Add Any Tasks!\n")
        else:
         Display(tasks)
         print("\n\n")
 
-    case 3:
-        if len(tasks)<=0:
-           print("No Tasks Yet....!")
+    case '3':
+        if len(listtasks)<=0:
+         os.system("cls") 
+         print("\n\nNo Tasks Yet,First Add Any Tasks!\n")
         else:
+         os.system("cls") 
          Done(tasks)
          print("\n")
          Display(tasks)
          print("\n\n")
-    case 4:
+    case '4':
         os.system("cls")
         print("=========== TO-DO-LIST ===========\n")
         print("GoodBye......!")
         break
+    case _:
+        os.system("cls") 
+        print("Invalid Option,Try Again.....!")
+        continue
        
 
 
